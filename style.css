@@ -177,9 +177,13 @@ footer {
     font-size: 32px;
   }
 
+  nav {
+    padding: 8px 12px;
+  }
+
   nav a {
-    margin: 0 8px;
-    font-size: 16px;
+    margin: 0 5px;
+    font-size: 13px;
   }
 
   .hero {
