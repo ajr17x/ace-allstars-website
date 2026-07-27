@@ -179,6 +179,33 @@ p {
   margin-top: 10px;
 }
 
+.coaches-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 20px;
+  max-width: 900px;
+  margin: 25px auto 10px auto;
+}
+
+.coach-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  display: block;
+}
+
+.coach-card h3 {
+  color: #ec0968;
+  font-size: 17px;
+  margin: 10px 0 2px 0;
+}
+
+.coach-card p {
+  font-size: 13px;
+  color: #dddddd;
+  margin: 0;
+}
+
 .schedule-day {
   max-width: 500px;
   margin: 0 auto 30px auto;
