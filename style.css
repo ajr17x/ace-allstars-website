@@ -146,6 +146,32 @@ p {
   border-right: none;
 }
 
+.form-embed {
+  background-color: #ffffff;
+  border-radius: 16px;
+  max-width: 640px;
+  margin: 25px auto 10px auto;
+  padding: 8px;
+  overflow: hidden;
+}
+
+.form-embed iframe {
+  width: 100%;
+  border: none;
+  display: block;
+  border-radius: 10px;
+}
+
+.open-full-link {
+  color: #999999;
+  font-size: 14px;
+  text-decoration: underline;
+}
+
+.open-full-link:hover {
+  color: #ec0968;
+}
+
 .coaches-graphic {
   width: 100%;
   max-width: 900px;
