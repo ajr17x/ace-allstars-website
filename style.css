@@ -116,6 +116,36 @@ p {
   margin-top: 10px;
 }
 
+.section-heading {
+  color: #ec0968;
+  font-size: 22px;
+  margin: 30px auto 10px auto;
+}
+
+.facilities {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: #ec0968;
+  border-radius: 14px;
+  max-width: 600px;
+  margin: 25px auto;
+  overflow: hidden;
+}
+
+.facilities span {
+  flex: 1 1 150px;
+  padding: 16px 12px;
+  color: #000000;
+  font-weight: bold;
+  font-size: 15px;
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.facilities span:last-child {
+  border-right: none;
+}
+
 .coaches-graphic {
   width: 100%;
   max-width: 900px;
