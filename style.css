@@ -27,6 +27,10 @@ body {
   z-index: 0;
 }
 
+.hero-bg-right {
+  object-position: 75% center;
+}
+
 .hero-overlay {
   position: absolute;
   top: 0;
