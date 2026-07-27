@@ -73,10 +73,11 @@ nav a {
   font-weight: bold;
   margin: 0 15px;
   font-size: 18px;
+  white-space: nowrap;
 }
 
 nav a:hover {
-  color: #f0178c;
+  color: #ec0968;
 }
 
 .logo {
@@ -87,14 +88,14 @@ nav a:hover {
 }
 
 h1 {
-  color: #f0178c;
+  color: #ec0968;
   font-size: 48px;
 }
 
 .divider {
   width: 80px;
   height: 4px;
-  background-color: #f0178c;
+  background-color: #ec0968;
   margin: 15px auto 25px auto;
   border-radius: 2px;
 }
@@ -106,7 +107,7 @@ p {
 
 .button {
   display: inline-block;
-  background-color: #f0178c;
+  background-color: #ec0968;
   color: #ffffff;
   padding: 12px 24px;
   border-radius: 30px;
@@ -129,7 +130,7 @@ p {
 }
 
 .schedule-day h2 {
-  color: #f0178c;
+  color: #ec0968;
   font-size: 22px;
   text-align: center;
   border-bottom: 1px solid #333333;
