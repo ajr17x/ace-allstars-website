@@ -181,7 +181,7 @@ p {
 
 .coaches-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 20px;
   max-width: 900px;
   margin: 25px auto 10px auto;
@@ -189,7 +189,9 @@ p {
 
 .coach-card img {
   width: 100%;
-  height: auto;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: top center;
   border-radius: 12px;
   display: block;
 }
@@ -272,5 +274,10 @@ footer {
   .hero {
     min-height: 65vh;
     margin: -25px -15px 0 -15px;
+  }
+
+  .coaches-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
   }
 }
