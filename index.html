@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=26">
+  <link rel="stylesheet" href="style.css?v=27">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -113,6 +113,12 @@
     </div>
   </div>
 
+  <div class="stat-dots" aria-hidden="true">
+    <span class="stat-dot active"></span>
+    <span class="stat-dot"></span>
+    <span class="stat-dot"></span>
+  </div>
+
   <div class="split-section">
     <div class="split-media">
       <img src="images/HomePageImage.jpg" alt="Ace Allstars squad celebrating at a UCA competition" loading="lazy">
@@ -169,5 +175,27 @@
 
   <script data-goatcounter="https://aceallstarscheer.goatcounter.com/count"
           async src="//gc.zgo.at/count.js"></script>
+
+  <script>
+    (function () {
+      var row = document.querySelector('.stat-row');
+      var dots = document.querySelectorAll('.stat-dot');
+      if (!row || !dots.length || !('IntersectionObserver' in window)) return;
+
+      var cards = row.querySelectorAll('.stat-item');
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            var index = Array.prototype.indexOf.call(cards, entry.target);
+            dots.forEach(function (dot, i) {
+              dot.classList.toggle('active', i === index);
+            });
+          }
+        });
+      }, { root: row, threshold: 0.6 });
+
+      cards.forEach(function (card) { observer.observe(card); });
+    })();
+  </script>
 </body>
 </html>

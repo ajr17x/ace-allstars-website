@@ -336,6 +336,26 @@ p {
   margin-bottom: 14px;
 }
 
+.stat-dots {
+  display: none;
+  justify-content: center;
+  gap: 8px;
+  margin: 6px 0 4px 0;
+}
+
+.stat-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--color-border);
+  transition: background-color 0.25s ease, transform 0.25s ease;
+}
+
+.stat-dot.active {
+  background-color: var(--color-pink);
+  transform: scale(1.4);
+}
+
 .stat-item h3 {
   font-family: var(--font-display);
   font-weight: normal;
@@ -721,6 +741,10 @@ footer {
 
   .stat-row::-webkit-scrollbar {
     display: none;
+  }
+
+  .stat-dots {
+    display: flex;
   }
 
   .coaches-grid {
