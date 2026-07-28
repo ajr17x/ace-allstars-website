@@ -706,6 +706,21 @@ footer {
 
   .stat-row {
     margin-top: 36px;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+    overflow-y: visible;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 0 24px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    margin-left: -15px;
+    margin-right: -15px;
+    padding: 14px 24px 20px 24px;
+  }
+
+  .stat-row::-webkit-scrollbar {
+    display: none;
   }
 
   .coaches-grid {
@@ -713,7 +728,14 @@ footer {
     gap: 14px;
   }
 
-  .stat-item,
+  .stat-item {
+    flex: 0 0 auto;
+    width: 190px;
+    max-width: 190px;
+    scroll-snap-align: center;
+    text-align: center;
+  }
+
   .split-section,
   .cta-band {
     text-align: center;
@@ -722,11 +744,5 @@ footer {
   .stat-item p,
   .split-body p {
     text-align: center;
-  }
-
-  .stat-item:nth-child(1),
-  .stat-item:nth-child(2),
-  .stat-item:nth-child(3) {
-    transform: none;
   }
 }
