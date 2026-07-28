@@ -701,7 +701,11 @@ footer {
   }
 
   .hero-solid {
-    min-height: 60vh;
+    min-height: 84vh;
+  }
+
+  .stat-row {
+    margin-top: 36px;
   }
 
   .coaches-grid {
