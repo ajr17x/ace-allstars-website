@@ -102,6 +102,10 @@ body {
   border: 1px solid var(--color-border);
 }
 
+.hero-page {
+  min-height: 42vh;
+}
+
 .hero-solid .hero-content .eyebrow,
 .hero-solid .hero-content h1,
 .hero-solid .hero-content p {
@@ -722,6 +726,10 @@ footer {
 
   .hero-solid {
     min-height: 84vh;
+  }
+
+  .hero-page {
+    min-height: 34vh;
   }
 
   .stat-row {
