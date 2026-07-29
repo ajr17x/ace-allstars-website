@@ -921,6 +921,11 @@ footer {
   .hero {
     min-height: 70vh;
     margin: -25px -15px 0 -15px;
+    align-items: flex-start;
+  }
+
+  .hero-content {
+    padding-top: 40px;
   }
 
   .hero-solid {
