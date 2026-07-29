@@ -510,36 +510,169 @@ p {
   margin-top: 10px;
 }
 
+.flip-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 30px;
+  padding: 8px 18px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-pink);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 6px 0 26px 0;
+}
+
+.flip-hint-icon {
+  width: 15px;
+  height: 15px;
+  animation: flipHintSpin 3s ease-in-out infinite;
+}
+
+@keyframes flipHintSpin {
+  0%, 75%, 100% {
+    transform: rotateY(0deg);
+  }
+  40% {
+    transform: rotateY(180deg);
+  }
+}
+
 .coaches-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
   max-width: 900px;
-  margin: 25px auto 10px auto;
+  margin: 10px auto 10px auto;
 }
 
-.coach-card img {
-  width: 100%;
+.coach-flip {
   aspect-ratio: 3 / 4;
+  perspective: 1400px;
+  cursor: pointer;
+}
+
+.coach-flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.coach-flip.flipped .coach-flip-inner {
+  transform: rotateY(180deg);
+}
+
+.coach-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  border-radius: 12px;
+  border: 1px solid #17181b;
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+}
+
+.coach-front {
+  background-color: #000000;
+}
+
+.coach-front img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   object-position: top center;
-  border-radius: 12px;
   display: block;
 }
 
-.coach-card h3 {
-  font-family: var(--font-display);
-  font-weight: normal;
-  color: var(--color-pink);
-  font-size: 17px;
-  margin: 10px 0 2px 0;
-  text-transform: uppercase;
+.coach-label {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 12px 8px 10px 8px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+  text-align: center;
 }
 
-.coach-card p {
-  font-size: 13px;
-  color: var(--color-text-muted);
+.coach-label h3 {
+  font-family: var(--font-display);
+  font-weight: normal;
+  color: #ffffff;
+  font-size: 15px;
+  text-transform: uppercase;
   margin: 0;
+}
+
+.coach-label p {
+  font-size: 10px;
+  color: var(--color-pink);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 2px 0 0 0;
+}
+
+.coach-back {
+  background-color: #f7f5f0;
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 14px;
+  text-align: center;
+}
+
+.coach-back h3 {
+  font-family: var(--font-display);
+  font-weight: normal;
+  color: #111214;
+  font-size: 16px;
+  text-transform: uppercase;
+  margin: 0 0 4px 0;
+}
+
+.coach-role {
+  font-size: 10px;
+  color: var(--color-pink);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0 0 10px 0;
+}
+
+.coach-bio {
+  font-size: 12px;
+  color: #666666;
+  font-style: italic;
+  margin: 0;
+}
+
+.coach-dots {
+  display: none;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  max-width: 280px;
+  margin: 10px auto 0 auto;
+}
+
+.coach-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-border);
+  transition: background-color 0.25s ease, transform 0.25s ease;
+}
+
+.coach-dot.active {
+  background-color: var(--color-pink);
+  transform: scale(1.4);
 }
 
 .schedule-day {
@@ -756,8 +889,33 @@ footer {
   }
 
   .coaches-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 14px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+    overflow-y: visible;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 0 24px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    margin-left: -15px;
+    margin-right: -15px;
+    padding: 4px 24px 20px 24px;
+    gap: 16px;
+  }
+
+  .coaches-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .coach-flip {
+    flex: 0 0 auto;
+    width: 170px;
+    scroll-snap-align: center;
+  }
+
+  .coach-dots {
+    display: flex;
   }
 
   .stat-item {
