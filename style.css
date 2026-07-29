@@ -477,30 +477,69 @@ p {
   border-right: none;
 }
 
-.form-embed {
-  background-color: #ffffff;
-  border-radius: 16px;
-  max-width: 640px;
-  margin: 25px auto 10px auto;
-  padding: 8px;
-  overflow: hidden;
+.contact-form {
+  max-width: 480px;
+  margin: 30px auto 10px auto;
+  text-align: left;
 }
 
-.form-embed iframe {
+.contact-form label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--color-pink);
+  margin: 18px 0 6px 0;
+}
+
+.contact-form label:first-of-type {
+  margin-top: 0;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--color-text);
+  transition: border-color 0.2s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--color-pink);
+}
+
+.contact-form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.contact-form button {
+  margin-top: 22px;
   width: 100%;
   border: none;
-  display: block;
-  border-radius: 10px;
+  cursor: pointer;
 }
 
-.open-full-link {
-  color: #999999;
+.form-status {
+  margin-top: 14px;
   font-size: 14px;
-  text-decoration: underline;
+  min-height: 20px;
 }
 
-.open-full-link:hover {
-  color: var(--color-pink);
+.form-status.success {
+  color: #4ade80;
+}
+
+.form-status.error {
+  color: #f87171;
 }
 
 .coaches-graphic {

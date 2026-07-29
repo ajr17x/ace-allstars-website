@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=30">
+  <link rel="stylesheet" href="style.css?v=31">
 </head>
 <body>
 
@@ -47,13 +47,26 @@
     to the team.
   </p>
 
-  <div class="form-embed">
-    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc30NFC2PdJYcLsOb9aMro_UMTSPHxgNgL5uAOR_q4gypLRfw/viewform?embedded=true" width="100%" height="1200" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
-  </div>
+  <form id="join-form" class="contact-form" action="https://formspree.io/f/xvzeywng" method="POST">
+    <input type="hidden" name="_subject" value="New enquiry from Ace Allstars website">
+    <input type="text" name="_gotcha" style="display:none">
 
-  <p>
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSc30NFC2PdJYcLsOb9aMro_UMTSPHxgNgL5uAOR_q4gypLRfw/viewform?usp=header" class="open-full-link" target="_blank">Prefer a full page? Open the form here</a>
-  </p>
+    <label for="athleteName">Athlete Name</label>
+    <input type="text" id="athleteName" name="Athlete Name" required>
+
+    <label for="athleteDob">Athlete Date of Birth</label>
+    <input type="date" id="athleteDob" name="Athlete Date of Birth" required>
+
+    <label for="email">Athlete (or Guardian) Email Address</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="message">Anything Else You Would Like to Share</label>
+    <textarea id="message" name="Message" rows="4"></textarea>
+
+    <button type="submit" class="button">Send Enquiry</button>
+
+    <p id="form-status" class="form-status" aria-live="polite"></p>
+  </form>
 
   <footer>
     <div class="footer-grid">
@@ -93,5 +106,50 @@
 
   <script data-goatcounter="https://aceallstarscheer.goatcounter.com/count"
           async src="//gc.zgo.at/count.js"></script>
+
+  <script>
+    (function () {
+      var form = document.getElementById('join-form');
+      var status = document.getElementById('form-status');
+      if (!form) return;
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var submitBtn = form.querySelector('button[type="submit"]');
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+        status.textContent = '';
+        status.className = 'form-status';
+
+        fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        }).then(function (response) {
+          if (response.ok) {
+            form.reset();
+            status.textContent = "Thanks! We've received your enquiry and will be in touch soon.";
+            status.className = 'form-status success';
+          } else {
+            response.json().then(function (data) {
+              var message = (data && data.errors && data.errors.map(function (err) { return err.message; }).join(', ')) || 'Something went wrong, please try again.';
+              status.textContent = message;
+              status.className = 'form-status error';
+            }).catch(function () {
+              status.textContent = 'Something went wrong, please try again.';
+              status.className = 'form-status error';
+            });
+          }
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Send Enquiry';
+        }).catch(function () {
+          status.textContent = 'Network error, please check your connection and try again.';
+          status.className = 'form-status error';
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Send Enquiry';
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
