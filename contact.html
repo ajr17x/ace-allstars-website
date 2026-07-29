@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=31">
+  <link rel="stylesheet" href="style.css?v=32">
 </head>
 <body>
 
@@ -55,7 +55,7 @@
     <input type="text" id="athleteName" name="Athlete Name" required>
 
     <label for="athleteDob">Athlete Date of Birth</label>
-    <input type="date" id="athleteDob" name="Athlete Date of Birth" required>
+    <input type="date" id="athleteDob" name="Athlete Date of Birth" class="input-caps" required>
 
     <label for="email">Athlete (or Guardian) Email Address</label>
     <input type="email" id="email" name="email" required>
@@ -67,6 +67,11 @@
 
     <p id="form-status" class="form-status" aria-live="polite"></p>
   </form>
+
+  <div id="form-success" class="form-success" hidden>
+    <h3>Thanks for your enquiry!</h3>
+    <p>We've received your submission and will be in touch soon.</p>
+  </div>
 
   <footer>
     <div class="footer-grid">
@@ -111,7 +116,8 @@
     (function () {
       var form = document.getElementById('join-form');
       var status = document.getElementById('form-status');
-      if (!form) return;
+      var success = document.getElementById('form-success');
+      if (!form || !success) return;
 
       form.addEventListener('submit', function (e) {
         e.preventDefault();
@@ -119,7 +125,6 @@
         submitBtn.disabled = true;
         submitBtn.textContent = 'Sending...';
         status.textContent = '';
-        status.className = 'form-status';
 
         fetch(form.action, {
           method: 'POST',
@@ -127,24 +132,21 @@
           headers: { 'Accept': 'application/json' }
         }).then(function (response) {
           if (response.ok) {
-            form.reset();
-            status.textContent = "Thanks! We've received your enquiry and will be in touch soon.";
-            status.className = 'form-status success';
+            form.hidden = true;
+            success.hidden = false;
+            success.scrollIntoView({ behavior: 'smooth', block: 'center' });
           } else {
             response.json().then(function (data) {
               var message = (data && data.errors && data.errors.map(function (err) { return err.message; }).join(', ')) || 'Something went wrong, please try again.';
               status.textContent = message;
-              status.className = 'form-status error';
             }).catch(function () {
               status.textContent = 'Something went wrong, please try again.';
-              status.className = 'form-status error';
             });
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Send Enquiry';
           }
-          submitBtn.disabled = false;
-          submitBtn.textContent = 'Send Enquiry';
         }).catch(function () {
           status.textContent = 'Network error, please check your connection and try again.';
-          status.className = 'form-status error';
           submitBtn.disabled = false;
           submitBtn.textContent = 'Send Enquiry';
         });
