@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=34">
+  <link rel="stylesheet" href="style.css?v=37">
 </head>
 <body>
 
@@ -40,6 +40,38 @@
     </div>
   </div>
 
+  <div class="photo-carousel">
+    <div class="carousel-slide"><img src="images/About Us 1.jpeg" alt="Ace Allstars Cheer photo 1"></div>
+    <div class="carousel-slide"><img src="images/About Us 2.jpeg" alt="Ace Allstars Cheer photo 2" loading="lazy"></div>
+    <div class="carousel-slide"><img src="images/About Us 3.jpeg" alt="Ace Allstars Cheer photo 3" loading="lazy"></div>
+    <div class="carousel-slide"><img src="images/About Us 4.jpeg" alt="Ace Allstars Cheer photo 4" loading="lazy"></div>
+    <div class="carousel-slide"><img src="images/About Us 5.jpeg" alt="Ace Allstars Cheer photo 5" loading="lazy"></div>
+    <div class="carousel-slide"><img src="images/About Us 6.jpeg" alt="Ace Allstars Cheer photo 6" loading="lazy"></div>
+    <div class="carousel-slide"><img src="images/About Us 7.jpeg" alt="Ace Allstars Cheer photo 7" loading="lazy"></div>
+    <div class="carousel-slide"><img src="images/About Us 8.jpeg" alt="Ace Allstars Cheer photo 8" loading="lazy"></div>
+    <div class="carousel-slide"><img src="images/About Us 9.jpeg" alt="Ace Allstars Cheer photo 9" loading="lazy"></div>
+    <div class="carousel-slide"><img src="images/About Us 10.jpeg" alt="Ace Allstars Cheer photo 10" loading="lazy"></div>
+    <div class="carousel-slide"><img src="images/About Us 11.jpeg" alt="Ace Allstars Cheer photo 11" loading="lazy"></div>
+    <div class="carousel-slide"><img src="images/About Us 12.jpeg" alt="Ace Allstars Cheer photo 12" loading="lazy"></div>
+    <div class="carousel-slide"><img src="images/About Us 13.jpeg" alt="Ace Allstars Cheer photo 13" loading="lazy"></div>
+  </div>
+
+  <div class="carousel-dots" aria-hidden="true">
+    <span class="carousel-dot active"></span>
+    <span class="carousel-dot"></span>
+    <span class="carousel-dot"></span>
+    <span class="carousel-dot"></span>
+    <span class="carousel-dot"></span>
+    <span class="carousel-dot"></span>
+    <span class="carousel-dot"></span>
+    <span class="carousel-dot"></span>
+    <span class="carousel-dot"></span>
+    <span class="carousel-dot"></span>
+    <span class="carousel-dot"></span>
+    <span class="carousel-dot"></span>
+    <span class="carousel-dot"></span>
+  </div>
+
   <p>
     Since opening our doors, the programme has grown rapidly, attracting
     athletes of all ages and abilities from across Hertfordshire and the
@@ -58,13 +90,6 @@
     As we continue to grow, our commitment remains the same: to provide
     exceptional coaching, exciting opportunities and a community that
     athletes and families are proud to be part of.
-  </p>
-
-  <h2 class="section-heading">The ACE Army</h2>
-  <p>
-    We want our athletes to feel like they are part of the ACE Army, with
-    the knowledge that our gym will always be a safe space for them to
-    express themselves.
   </p>
 
   <h2 class="section-heading">Our Ethos</h2>
@@ -125,7 +150,46 @@
     </div>
   </footer>
 
-  <script data-goatcounter="https://aceallstarscheer.goatcounter.com/count"
-          async src="//gc.zgo.at/count.js"></script>
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="9e8e40a7-dca6-4106-bf0d-f78538abece8"></script>
+
+  <script>
+    (function () {
+      var row = document.querySelector('.photo-carousel');
+      var dots = document.querySelectorAll('.carousel-dot');
+      if (!row || !dots.length) return;
+
+      var slides = Array.prototype.slice.call(row.querySelectorAll('.carousel-slide'));
+
+      function setActiveDot() {
+        var rowCenter = row.scrollLeft + row.clientWidth / 2;
+        var closestIndex = 0;
+        var closestDistance = Infinity;
+        slides.forEach(function (slide, i) {
+          var slideCenter = slide.offsetLeft + slide.clientWidth / 2;
+          var distance = Math.abs(slideCenter - rowCenter);
+          if (distance < closestDistance) {
+            closestDistance = distance;
+            closestIndex = i;
+          }
+        });
+        dots.forEach(function (dot, i) {
+          dot.classList.toggle('active', i === closestIndex);
+        });
+      }
+
+      setActiveDot();
+
+      var ticking = false;
+      row.addEventListener('scroll', function () {
+        if (!ticking) {
+          window.requestAnimationFrame(function () {
+            setActiveDot();
+            ticking = false;
+          });
+          ticking = true;
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
