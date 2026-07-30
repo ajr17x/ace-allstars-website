@@ -14,14 +14,22 @@
   <meta name="twitter:card" content="summary">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=44">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=47">
 </head>
 <body>
 
+  <svg style="display:none" aria-hidden="true">
+    <symbol id="icon-spade" viewBox="0 0 24 24">
+      <path d="M12 2C9 6 3 10 3 15a5 5 0 0 0 8 4c-.3 1.5-1 3-3 5h8c-2-2-2.7-3.5-3-5a5 5 0 0 0 8-4c0-5-6-9-9-13Z"/>
+    </symbol>
+  </svg>
+
+  <a href="#main-content" class="skip-link">Skip to content</a>
+
   <div class="hero hero-solid hero-page">
     <svg class="hero-watermark" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M12 2C9 6 3 10 3 15a5 5 0 0 0 8 4c-.3 1.5-1 3-3 5h8c-2-2-2.7-3.5-3-5a5 5 0 0 0 8-4c0-5-6-9-9-13Z"/>
+      <use href="#icon-spade"></use>
     </svg>
 
     <div class="hero-content">
@@ -30,7 +38,7 @@
         <a href="about.html">About</a>
         <a href="coaches.html">Coaches</a>
         <a href="schedule.html">Schedule</a>
-        <a href="contact.html">Join Us</a>
+        <a href="contact.html" aria-current="page">Join Us</a>
       </nav>
 
       <img src="images/PinkBlackLogo.png" alt="Ace Allstars Cheer Logo" class="logo">
@@ -40,7 +48,7 @@
     </div>
   </div>
 
-  <p>
+  <p id="main-content">
     Ready to join the Ace family? Whether you're taking your first steps
     into cheerleading or bringing years of experience, we have
     opportunities for every athlete. Based in Nazeing, we welcome members
@@ -66,6 +74,7 @@
     <button type="submit" class="button">Send Enquiry</button>
 
     <p id="form-status" class="form-status" aria-live="polite"></p>
+    <p class="form-note">By submitting this form you agree to our <a href="privacy.html">Privacy Policy</a>.</p>
   </form>
 
   <div id="form-success" class="form-success" hidden>
@@ -105,7 +114,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2026 Ace Allstars Cheer</p>
+      <p>&copy; 2026 Ace Allstars Cheer &middot; <a href="privacy.html">Privacy Policy</a></p>
     </div>
   </footer>
 
