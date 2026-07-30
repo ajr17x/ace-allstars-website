@@ -913,6 +913,7 @@ p {
 
 .schedule-row {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   gap: 10px;
   padding: 10px 14px;
@@ -920,13 +921,26 @@ p {
   border-bottom: 1px solid var(--color-border);
 }
 
+.squad-info {
+  display: flex;
+  flex-direction: column;
+}
+
 .schedule-row .squad {
   color: var(--color-text);
   font-weight: 600;
 }
 
+.schedule-row .squad-level {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--color-text-muted);
+  margin-top: 2px;
+}
+
 .schedule-row .time {
   color: var(--color-text-muted);
+  white-space: nowrap;
 }
 
 footer {
