@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=47">
+  <link rel="stylesheet" href="style.css?v=48">
 </head>
 <body>
 
@@ -110,7 +110,24 @@
       We use Umami, a privacy-focused analytics tool, to understand
       general visitor numbers to our website. It does not use cookies and
       does not collect any personally identifiable information, so no
-      consent banner is required.
+      consent is required for this.
+    </p>
+
+    <h2>Cookies &amp; Google Ads</h2>
+    <p>
+      If you arrive at our site through a Google ad, we may ask for your
+      consent to use a small tracking cookie from Google Ads. This helps
+      us understand whether our advertising is actually leading to
+      enquiries, so we can spend our (very modest) advertising budget
+      sensibly.
+    </p>
+    <p>
+      This cookie is entirely optional and separate from the cookie-free
+      analytics described above. You'll be asked to accept or reject it
+      the first time you visit, and your choice is remembered on your
+      device. If you reject it, you can still use every part of the site
+      exactly as normal. You can change your decision at any time using
+      the "Cookie Preferences" link in the footer of any page.
     </p>
 
     <h2>Your Rights</h2>
@@ -160,10 +177,20 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2026 Ace Allstars Cheer &middot; <a href="privacy.html">Privacy Policy</a></p>
+      <p>&copy; 2026 Ace Allstars Cheer &middot; <a href="privacy.html">Privacy Policy</a> &middot; <a href="#" id="cookie-prefs-link">Cookie Preferences</a></p>
     </div>
   </footer>
 
   <script defer src="https://cloud.umami.is/script.js" data-website-id="9e8e40a7-dca6-4106-bf0d-f78538abece8"></script>
+
+  <div id="cookie-banner" class="cookie-banner" hidden>
+    <p>We'd like to use a small tracking cookie to help measure whether our Google Ads are working. This is optional and separate from our regular cookie-free site analytics. <a href="privacy.html">Learn more</a></p>
+    <div class="cookie-banner-buttons">
+      <button type="button" id="cookie-reject" class="cookie-btn cookie-btn-reject">Reject</button>
+      <button type="button" id="cookie-accept" class="cookie-btn cookie-btn-accept">Accept</button>
+    </div>
+  </div>
+
+  <script src="consent.js?v=1"></script>
 </body>
 </html>
