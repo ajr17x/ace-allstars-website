@@ -33,6 +33,10 @@
   top: 12px;
 }
 
+.cookie-banner[hidden] {
+  display: none;
+}
+
 .cookie-banner {
   position: fixed;
   left: 16px;
