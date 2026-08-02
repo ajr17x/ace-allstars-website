@@ -700,6 +700,12 @@ p {
   text-transform: uppercase;
 }
 
+.field-error {
+  margin: 6px 0 0 0;
+  font-size: 12px;
+  color: var(--color-pink);
+}
+
 .form-success {
   max-width: 480px;
   margin: 30px auto 10px auto;

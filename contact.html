@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=49">
+  <link rel="stylesheet" href="style.css?v=50">
 </head>
 <body>
 
@@ -68,6 +68,13 @@
 
     <label for="email">Athlete (or Guardian) Email Address</label>
     <input type="email" id="email" name="email" required>
+
+    <label for="emailConfirm">Confirm Email Address</label>
+    <input type="email" id="emailConfirm" name="Confirm Email" required>
+    <p id="email-mismatch" class="field-error" hidden>Those email addresses don't match — please check and try again.</p>
+
+    <label for="phone">Mobile Number</label>
+    <input type="tel" id="phone" name="Mobile Number" required>
 
     <label for="message">Anything Else You Would Like to Share</label>
     <textarea id="message" name="Message" rows="4"></textarea>
@@ -126,10 +133,29 @@
       var form = document.getElementById('join-form');
       var status = document.getElementById('form-status');
       var success = document.getElementById('form-success');
+      var email = document.getElementById('email');
+      var emailConfirm = document.getElementById('emailConfirm');
+      var mismatchMsg = document.getElementById('email-mismatch');
       if (!form || !success) return;
+
+      [email, emailConfirm].forEach(function (input) {
+        if (input) {
+          input.addEventListener('input', function () {
+            mismatchMsg.hidden = true;
+          });
+        }
+      });
 
       form.addEventListener('submit', function (e) {
         e.preventDefault();
+
+        if (email.value.trim().toLowerCase() !== emailConfirm.value.trim().toLowerCase()) {
+          mismatchMsg.hidden = false;
+          emailConfirm.focus();
+          return;
+        }
+        mismatchMsg.hidden = true;
+
         var submitBtn = form.querySelector('button[type="submit"]');
         submitBtn.disabled = true;
         submitBtn.textContent = 'Sending...';
