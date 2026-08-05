@@ -67,14 +67,14 @@
     <input type="date" id="athleteDob" name="Athlete Date of Birth" class="input-caps" required>
 
     <label for="email">Athlete (or Guardian) Email Address</label>
-    <input type="email" id="email" name="email" required>
+    <input type="email" id="email" name="email" autocomplete="email" required>
 
     <label for="emailConfirm">Confirm Email Address</label>
     <input type="email" id="emailConfirm" name="Confirm Email" autocomplete="off" required>
     <p id="email-mismatch" class="field-error" hidden>Those email addresses don't match — please check and try again.</p>
 
     <label for="phone">Mobile Number</label>
-    <input type="tel" id="phone" name="Mobile Number" required>
+    <input type="tel" id="phone" name="Mobile Number" autocomplete="tel" placeholder="07123 456789" required>
 
     <label for="message">Anything Else You Would Like to Share</label>
     <textarea id="message" name="Message" rows="4"></textarea>
